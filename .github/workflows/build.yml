@@ -22,12 +22,12 @@ jobs:
         run: npm install
 
       - name: Build Angular app
-        run: npm run build -- --configuration=production
+        run: npm run build:prod
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: dist/angularHelloWorld
+          folder: dist/angularHelloWorld/browser
           token: ${{ secrets.GH_TOKEN }}
           clean: true
