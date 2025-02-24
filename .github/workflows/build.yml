@@ -1,4 +1,4 @@
-name: Build and Deploy Angular
+name: Build and Deploy Angular with Docker
 
 on:
   push:
@@ -13,21 +13,22 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '20'
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
 
-      - name: Install dependencies
-        run: npm install
+      - name: Build Docker image
+        run: docker build -t angular-app .
 
-      - name: Build Angular app
-        run: npm run build -- --configuration=production
+      - name: Run container and copy build files
+        run: |
+          docker run --rm --name angular-container -d angular-app
+          docker cp angular-container:/usr/share/nginx/html ./dist
+          docker stop angular-container
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: dist/angularHelloWorld/browser
+          folder: dist
           token: ${{ secrets.GH_TOKEN }}
           clean: true
