@@ -23,7 +23,6 @@ jobs:
         run: |
           docker run --rm --name angular-container -d angular-app
           docker cp angular-container:/usr/share/nginx/html dist
-          ls -a dist
           docker stop angular-container
 
       - name: Deploy to GitHub Pages
