@@ -25,10 +25,6 @@ jobs:
           docker cp angular-container:/usr/share/nginx/html dist
           ls -a dist
           docker stop angular-container
-          # docker build --target=build-stage -t angular-build .
-          # docker create --name extract angular-build
-          # docker cp extract:/usr/share/nginx/html ./dist
-          # docker rm extract
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
