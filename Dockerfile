@@ -17,7 +17,7 @@ ENV CHROME_BIN=/usr/bin/chromium
 
 # Copy source code and run tests
 COPY . .
-RUN npm run test -- --no-watch --no-progress --browsers=ChromeHeadless
+RUN npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessNoSandbox
 
 # Копируем весь проект и собираем Angular-приложение
 COPY . .
