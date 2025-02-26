@@ -19,6 +19,10 @@ jobs:
       - name: Build Docker image
         run: docker build -t angular-app .
 
+      - name: Run unit tests inside Docker
+        run: |
+          docker run --rm angular-test npm run test -- --no-watch --no-progress --browsers=ChromeHeadless
+
       - name: Run container and copy build files
         run: |
           docker run --rm --name angular-container -d angular-app
