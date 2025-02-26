@@ -6,6 +6,23 @@ on:
       - master
 
 jobs:
+
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Build Docker image for tests
+        run: docker build --target build -t angular-test .
+
+      - name: Run unit tests inside Docker
+        run: docker run --rm angular-test npm run test -- --no-watch --no-progress --browsers=ChromeHeadless
+
   build:
     runs-on: ubuntu-latest
 
@@ -22,13 +39,6 @@ jobs:
       - name: Run container and copy build files
         run: |
           docker run --rm --name angular-container -d angular-app
-
-      - name: Run unit tests inside Docker
-        run: |
-          docker run --rm angular-app npm run test -- --no-watch --no-progress --browsers=ChromeHeadless
-
-      - name: Run container and copy build files
-        run: |
           docker cp angular-container:/usr/share/nginx/html dist
           docker stop angular-container
 
