@@ -1,21 +1,16 @@
 {
-    "extends": [
-      "plugin:@angular-eslint/recommended",
-      "plugin:@typescript-eslint/recommended",
-      "eslint:recommended",
-      "plugin:prettier/recommended"
-    ],
-    "parserOptions": {
-      "project": "./tsconfig.json"
-    },
-    "parser": "@typescript-eslint/parser",
-    "plugins": [
-      "@angular-eslint",
-      "@typescript-eslint",
-      "prettier"
-    ],
-    "rules": {
-      "prettier/prettier": "error"
-    }
+  "extends": [
+    "plugin:@angular-eslint/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "eslint:recommended",
+    "plugin:prettier/recommended"
+  ],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@angular-eslint", "@typescript-eslint", "prettier"],
+  "rules": {
+    "prettier/prettier": "error"
   }
-  
+}
