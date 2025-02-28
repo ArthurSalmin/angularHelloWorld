@@ -29,7 +29,7 @@ jobs:
           projectBaseDir: .
           args: >
             -Dsonar.organization=arthursalmin
-            -Dsonar.projectKey=arthursalmin_angularHelloWorld
+            -Dsonar.projectKey=ArthurSalmin_angularHelloWorld
             -Dsonar.sources=src
             -Dsonar.tests=src
             -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
