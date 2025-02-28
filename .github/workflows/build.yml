@@ -30,11 +30,6 @@ jobs:
           args: >
             -Dsonar.organization=arthursalmin
             -Dsonar.projectKey=ArthurSalmin_angularHelloWorld
-            -Dsonar.sources=src
-            -Dsonar.tests=src
-            -Dsonar.test.inclusions=src/app/**/*.spec.ts \
-            -Dsonar.exclusions=src/app/**/*.e2e.ts
-            -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
   build:
