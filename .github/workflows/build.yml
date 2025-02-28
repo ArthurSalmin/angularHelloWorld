@@ -23,6 +23,18 @@ jobs:
       - name: Run unit tests inside Docker
         run: docker run --rm -e CHROME_BIN=/usr/bin/chromium angular-test npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessNoSandbox
 
+      - name: SonarCloud Analysis
+        uses: SonarSource/sonarcloud-github-action@master
+        with:
+          projectBaseDir: .
+          args: >
+            -Dsonar.organization=ArthurSalmin
+            -Dsonar.projectKey=ArthurSalmin_angularHelloWorld
+            -Dsonar.sources=src
+            -Dsonar.tests=src
+            -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
   build:
     runs-on: ubuntu-latest
 
