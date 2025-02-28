@@ -22,11 +22,11 @@ jobs:
 
       - name: Run ESLint inside Docker
         run: |
-          docker run --rm angular-app npx eslint . --ext .ts --ext .html --max-warnings=0
+          docker run --rm angular-test npx eslint . --ext .ts --ext .html --max-warnings=0
 
       - name: Run Prettier inside Docker
         run: |
-          docker run --rm angular-app npx prettier --check .
+          docker run --rm angular-test npx prettier --check .
 
       - name: Run unit tests inside Docker
         run: docker run --rm -e CHROME_BIN=/usr/bin/chromium angular-test npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessNoSandbox
